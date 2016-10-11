@@ -20,12 +20,30 @@ var callback = function(electronProcState) {
 
 gulp.task('serve', function () {
 
+  // Start browser process
   electron.start(callback);
 
-  gulp.watch('client.js', electron.restart);
+  // Restart browser process
+  gulp.watch('client.js', ['restart:browser']);
 
-  gulp.watch(['index.js', 'index.html'], electron.reload);
+  gulp.watch('*.html', ['reload:renderer']);
 
 });
+
+gulp.task('restart:browser', function(done) {
+  electron.restart(callback);
+  done();
+});
+
+gulp.task('reload:renderer', function (done) {
+  // Reload renderer process
+  electron.reload(callback);
+  setTimeout(function () {
+    electron.broadcast('myNotification');
+    done();
+  });
+});
+
+gulp.task('default', ['serve']);
 
 
