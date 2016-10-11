@@ -9,9 +9,18 @@ var options = {
 
 var electron = require('electron-connect').server.create(options);
  
+
+// bug 001 fixed
+var callback = function(electronProcState) {
+  console.log('electron process state: ' + electronProcState);
+  if (electronProcState == 'stopped') {
+    process.exit();
+  }
+};
+
 gulp.task('serve', function () {
 
-  electron.start();
+  electron.start(callback);
 
   gulp.watch('client.js', electron.restart);
 
