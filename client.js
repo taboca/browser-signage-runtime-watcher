@@ -1,3 +1,5 @@
+////
+//
 const {app, BrowserWindow} = require('electron');
 
 var client = require('electron-connect').client;

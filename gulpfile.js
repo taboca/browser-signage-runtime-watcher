@@ -1,7 +1,13 @@
 'use strict';
  
 var gulp = require('gulp');
-var electron = require('electron-connect').server.create();
+
+var options = {
+ 	//useGlobalElectron: false, 
+        //stopOnClose: true,
+}
+
+var electron = require('electron-connect').server.create(options);
  
 gulp.task('serve', function () {
 
