@@ -6,3 +6,7 @@ This is an experimental project aimed to control the basic infrastructure of a k
 * To watch and relaunch electron based in certain conditions
 * Conditions being: memory limitation
 * Conditions being: programatic event
+
+## Using
+
+* gulp serve 
