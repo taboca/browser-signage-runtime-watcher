@@ -4,7 +4,7 @@ var gulp = require('gulp');
 
 var options = {
  	//useGlobalElectron: false, 
-        //stopOnClose: true,
+        stopOnClose: true,
 }
 
 var electron = require('electron-connect').server.create(options);
