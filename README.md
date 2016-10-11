@@ -15,7 +15,7 @@ This is an experimental project aimed to control the basic infrastructure of a k
 
 ### stopOnClose note
 
-With the stopOnClose: true, there is a bug when a watch file is changed, it brings JS error
+With the stopOnClose: true, there is a bug when a watch file is changed, it brings the following JS error, which makes sense, because it properly kills the electron process.  
 
 ```
 Uncaught Exception:
