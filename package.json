@@ -1,7 +1,7 @@
 {
   "name": "electron-monitor",
   "version": "1.0.1",
-  "main": "index2.js",
+  "main": "client.js",
   "dependencies": {
     "electron-connect": "~0.6.0",
     "gulp": "~3.9.1"

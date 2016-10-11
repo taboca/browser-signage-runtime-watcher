@@ -1,16 +1,17 @@
-'use strict';
- 
-var app = require('app');
-var BrowserWindow = require('browser-window');
+const {app, BrowserWindow} = require('electron');
+
 var client = require('electron-connect').client;
- 
-app.on('ready', function () {
-  var mainWindow = new BrowserWindow({
-    width: 400,
-    height: 300
+
+let mainWindow;
+
+app.on('ready', () => {
+  mainWindow = new BrowserWindow({
+      height: 600,
+      width: 800
   });
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
  
-  // Connect to server process 
   client.create(mainWindow);
+
 });
