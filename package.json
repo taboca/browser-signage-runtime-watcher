@@ -1,10 +1,9 @@
 {
   "name": "electron-monitor",
   "version": "1.0.1",
-  "main": "client.js",
+  "main": "index2.js",
   "dependencies": {
     "electron-connect": "~0.6.0",
-    "gulp": "~3.9.1",
-    "electron-prebuilt": "~1.4.3"
+    "gulp": "~3.9.1"
   }
 }

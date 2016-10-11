@@ -12,7 +12,7 @@ gulp.task('serve', function () {
   gulp.watch('client.js', electron.restart);
 
   // Reload renderer process 
-  /gulp.watch(['index.js', 'index.html'], electron.reload);
+  gulp.watch(['index.js', 'index.html'], electron.reload);
 });
 
 
