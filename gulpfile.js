@@ -11,6 +11,7 @@ var electron = require('electron-connect').server.create(options);
  
 
 // bug 001 fixed
+// ref https://github.com/Quramy/electron-connect/blob/master/example/stop-on-close/gulpfile.js
 var callback = function(electronProcState) {
   console.log('electron process state: ' + electronProcState);
   if (electronProcState == 'stopped') {
