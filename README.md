@@ -9,7 +9,7 @@ This is an experimental project aimed to control the basic infrastructure of a k
 
 ## Using
 
-* gulp serve 
+* node ./node_modules/bin/gulp.js
 
 ## Notes
 
