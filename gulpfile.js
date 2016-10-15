@@ -6,7 +6,8 @@ var fs = require('fs');
 
 var options = {
  	//useGlobalElectron: false, 
-        stopOnClose: true,
+        stopOnClose : true,
+        logLevel    : 2,
 }
 
 var electron = require('electron-connect').server.create(options);
