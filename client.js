@@ -3,7 +3,7 @@
 //
 const {app, BrowserWindow} = require('electron');
 
-var config = require('./config_browser.json')
+var config = require('./config_browser.js')
 var client = require('electron-connect').client;
 
 ///
