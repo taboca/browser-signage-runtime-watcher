@@ -3,9 +3,10 @@
 //
 const {app, BrowserWindow} = require('electron');
 
+var config = require('./config_browser.json')
 var client = require('electron-connect').client;
 
-/// 
+///
 // This prevents possible early popups or other unknown popups
 // https://github.com/Quramy/electron-connect/issues/62
 // https://github.com/electron/electron/issues/7530
@@ -19,13 +20,14 @@ let mainWindow;
 app.on('ready', () => {
 
   mainWindow = new BrowserWindow({
-      height: 600,
-      width: 800
+      height: config.height,
+      width: config.width,
+      frame: config.frame
   });
 
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  //mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL(config.page);
 
-   
   client.create(mainWindow);
 
 });
