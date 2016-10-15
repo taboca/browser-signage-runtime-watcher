@@ -26,7 +26,8 @@ var app=false;
 gulp.task('serve', function () {
 
   // Start browser process
-  electron.start(callback);
+  electron.start("--enable-logging", callback);
+
   app=true;
 
   // Restart browser process
@@ -53,8 +54,10 @@ gulp.task('infra:command', function(done) {
     } 
     if(config['run']=='on') { 
       if(app==false) { 
-        //electron.stop(callback);
-        electron.start();
+        //electron.start();
+  	//electron.start("--enable-logging", callback);
+  	electron.start("--enable-logging");
+
  	app=true;
         done();
       } 
