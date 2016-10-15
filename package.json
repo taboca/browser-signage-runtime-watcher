@@ -4,6 +4,7 @@
   "main": "client.js",
   "dependencies": {
     "electron-connect": "~0.6.0",
+    "electron-prebuilt": "^1.4.3",
     "gulp": "~3.9.1"
   }
 }
