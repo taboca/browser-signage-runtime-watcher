@@ -16,7 +16,6 @@ This is an experimental project aimed to control the basic infrastructure of a k
 ### stopOnClose note
 
 Bug 001 / With the stopOnClose: true, there is a bug when a watch file is changed, it brings the following JS error, which makes sense, because it properly kills the electron process.  
-
 ```
 Uncaught Exception:
 Error: connect ECONNREFUSED 127.0.0.1:30080
@@ -33,4 +32,25 @@ Error: socket hang up
     at TCP._handle.close [as _onclose] (net.js:493:12)
 ```
 
-		
+## Fixed 
+
+Test the JS trouble related to bug when the JS exception before the browser
+if we can try to simulate bug here
+
+https://github.com/electron/electron/issues/7530
+
+https://shapeshed.com/uncaught-exceptions-in-node/
+
+process.on('uncaughtException', (err) => {
+  console.log('Exception:' + err);
+})
+
+## Todo 
+
+Tree Kill
+
+node stuff for killing
+
+# Other
+
+* http://schickling.me/synchronous-tasks-gulp/
