@@ -69,15 +69,21 @@ def grab_pid():
 
 #invocate only if there is a process running
 def memory_test(pid):
-	command = 'cat /proc/'+pid+'/status'
-	memoryOf = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-	processStatus = memoryOf.communicate()[0].split('\n')
+        nPid = pid.split(' ')
+        totalMemory = 0
+        if nPid: 
+          for k in nPid: 
+            logging.info('Testing PID:'+k); 
+            command = 'cat /proc/'+k+'/status'
+            memoryOf = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            processStatus = memoryOf.communicate()[0].split('\n')
 
-	for item in processStatus:
-		if item.find('VmRSS:') > -1:
-			#returns only the value in kiloBytes
-			return item.lstrip('VmRSS:\t ').rstrip(' kB')
-
+            for item in processStatus:
+              if item.find('VmRSS:') > -1:
+                  logging.info(str(item));
+                  #returns only the value in kiloBytes
+                  totalMemory+= int(item.lstrip('VmRSS:\t ').rstrip(' kB'))
+        return totalMemory 
 	
 def check_running():
 	#grab the pid
@@ -88,12 +94,18 @@ def check_running():
 	if telasocialPid != '':
 		#so memory usage will be tested
 		memoryUsage = memory_test(telasocialPid)
+                logging.info('Total memory = '+ str(memoryUsage))
 		
 		if int(memoryUsage) > MEMORY_LIMIT:
-			logging.warning('Overload. ' + memoryUsage + 'kB')
+			logging.warning('Overload. ' + str(memoryUsage) + 'kB')
 			try: 
-				os.kill(int(telasocialPid),15)
-				logging.info('process killed. Trying to restart')
+                                nPid = telasocialPid.split(' ')
+				#os.kill(int(telasocialPid),15)
+                                if nPid: 
+                                  for k in nPid: 
+                                    logging.info('Killing: ' + k)
+				    os.kill(int(k),15)
+ 
 				
 				#workaround to wait X to be killed before restart
 				sleep(5)
