@@ -1,0 +1,9 @@
+{
+  "productName" : "telasocial",
+  "name": "tela Social v2",
+  "version": "1.0.1",
+  "main": "main.js",
+  "devDependencies": {
+    "electron-packager": "^8.1.0"
+  }
+}
