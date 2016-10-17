@@ -1,6 +1,6 @@
 {
   "productName" : "telasocial",
-  "name": "tela Social v2",
+  "name": "telasocial",
   "version": "1.0.1",
   "main": "main.js",
   "devDependencies": {
