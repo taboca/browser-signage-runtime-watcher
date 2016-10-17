@@ -1,7 +1,6 @@
 const {app, BrowserWindow} = require('electron');
 
 var config = require('./config_browser.js')
-var client = require('electron-connect').client;
 
 ///
 // This prevents possible early popups or other unknown popups
@@ -24,8 +23,6 @@ app.on('ready', () => {
 
   //mainWindow.loadURL('file://' + __dirname + '/index.html');
   mainWindow.loadURL(config.page);
-
-  client.create(mainWindow);
 
 });
 
