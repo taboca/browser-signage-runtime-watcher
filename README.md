@@ -1,4 +1,9 @@
-# electron-monitor
+# Updated
+
+* build will create binary and install
+* cron will set to the cron 
+
+# electron-monitor legacy documentation
 
 This is an experimental project aimed to control the basic infrastructure of a kiosk-based aplpication using Electron. The goals are: 
 
