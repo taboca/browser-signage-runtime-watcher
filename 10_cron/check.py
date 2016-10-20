@@ -42,7 +42,7 @@ from time import sleep
 
 LOG_FILENAME = '/var/log/telasocial.log'
 #300MB = 300.000kB
-MEMORY_LIMIT = 400000 
+MEMORY_LIMIT = 400000
 
 # create logger
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -71,9 +71,9 @@ def grab_pid():
 def memory_test(pid):
         nPid = pid.split(' ')
         totalMemory = 0
-        if nPid: 
-          for k in nPid: 
-            logging.info('Testing PID:'+k); 
+        if nPid:
+          for k in nPid:
+            logging.info('Testing PID:'+k);
             command = 'cat /proc/'+k+'/status'
             memoryOf = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
             processStatus = memoryOf.communicate()[0].split('\n')
@@ -83,8 +83,8 @@ def memory_test(pid):
                   logging.info(str(item));
                   #returns only the value in kiloBytes
                   totalMemory+= int(item.lstrip('VmRSS:\t ').rstrip(' kB'))
-        return totalMemory 
-	
+        return totalMemory
+
 def check_running():
 	#grab the pid
 	telasocialPid = grab_pid()
@@ -95,34 +95,32 @@ def check_running():
 		#so memory usage will be tested
 		memoryUsage = memory_test(telasocialPid)
                 logging.info('Total memory = '+ str(memoryUsage))
-		
+
 		if int(memoryUsage) > MEMORY_LIMIT:
 			logging.warning('Overload. ' + str(memoryUsage) + 'kB')
-			try: 
-                                nPid = telasocialPid.split(' ')
+			try:
+				nPid = telasocialPid.split(' ')
 				#os.kill(int(telasocialPid),15)
-                                if nPid: 
-                                  for k in nPid: 
-                                    logging.info('Killing: ' + k)
-				    os.kill(int(k),15)
- 
-				
+				if nPid:
+					for k in nPid:
+					  logging.info('Killing: ' + k)
+					  os.kill(int(k),15)
 				#workaround to wait X to be killed before restart
 				sleep(5)
 				#Starting Telasocial
 				start_telasocial()
-				
-			except: 
+
+			except:
 				logging.debug('Process does not exist')
 		else:
 			logging.info('memory usage is OK: ' + str(memoryUsage) + 'kB')
-		
+
 	else:
 		#nothing running
 		logging.info('No such TelaSocial process. Trying to start')
 		#Starting Telasocial
 		start_telasocial()
-		
-			
+
+
 if __name__ == '__main__':
 	check_running()
