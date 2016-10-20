@@ -1,1 +1,1 @@
-electron-packager ./app telasocial --platform=linux --arch=x64 --version=1.4.3 --overwrite 
+electron-packager ./app telasocial --platform=linux --arch=x64 --version=1.3.8 --overwrite 
