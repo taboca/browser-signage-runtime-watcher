@@ -42,7 +42,7 @@ from time import sleep
 
 LOG_FILENAME = '/var/log/telasocial.log'
 #300MB = 300.000kB
-MEMORY_LIMIT = 400000
+MEMORY_LIMIT = 600000
 
 # create logger
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
