@@ -15,6 +15,8 @@ let mainWindow;
 
 app.on('ready', () => {
 
+  app.commandLine.appendSwitch('remote-debugging-port', '9222');
+
   mainWindow = new BrowserWindow({
       height: config.height,
       width: config.width,

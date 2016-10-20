@@ -27,7 +27,7 @@ var app=false;
 gulp.task('serve', function () {
 
   // Start browser process
-  electron.start("--enable-logging", callback);
+  electron.start("--enable-logging --remote-debugging-port=8315", callback);
 
   app=true;
 
