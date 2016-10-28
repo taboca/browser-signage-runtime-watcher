@@ -1,17 +1,16 @@
 'use strict';
- 
+
 var gulp = require('gulp');
 
 var fs = require('fs');
 
 var options = {
- 	//useGlobalElectron: false, 
+ 	//useGlobalElectron: false,
         stopOnClose : true,
         logLevel    : 2,
 }
 
 var electron = require('electron-connect').server.create(options);
- 
 
 // bug 001 fixed
 // ref https://github.com/Quramy/electron-connect/blob/master/example/stop-on-close/gulpfile.js
@@ -21,7 +20,7 @@ var callback = function(electronProcState) {
     //process.exit();
   }
 };
- 
+
 var app=false;
 
 gulp.task('serve', function () {
@@ -41,33 +40,28 @@ gulp.task('serve', function () {
 });
 
 gulp.task('infra:command', function(done) {
-
   fs.readFile("./start.json", {encoding: 'utf-8'}, function (err, data) {
     var config = JSON.parse(data);
     console.log('State ='+config['run']);
-    if(config['run']=='off') { 
-      if(app==true) { 
-        //electron.stop(callback);
+    if(config['run']=='off') {
+      if(app==true) {
         electron.stop();
         app=false;
         done();
-      } 
-    } 
-    if(config['run']=='on') { 
-      if(app==false) { 
-        //electron.start();
-  	//electron.start("--enable-logging", callback);
-  	electron.start("--enable-logging");
+      }
+    }
+    if(config['run']=='on') {
+      if(app==false) {
+          //electron.start();
+          //electron.start("--enable-logging", callback);
+          electron.start("--enable-logging");
+          app=true;
+          done();
+      }
+    }
 
- 	app=true;
-        done();
-      } 
-    } 
- 
   });
-
   done();
-
 });
 
 gulp.task('restart:browser', function(done) {
@@ -76,7 +70,6 @@ gulp.task('restart:browser', function(done) {
 });
 
 gulp.task('reload:renderer', function (done) {
-  // Reload renderer process
   electron.reload(callback);
   setTimeout(function () {
     electron.broadcast('myNotification');
@@ -85,5 +78,3 @@ gulp.task('reload:renderer', function (done) {
 });
 
 gulp.task('default', ['serve']);
-
-

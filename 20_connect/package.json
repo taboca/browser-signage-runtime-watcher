@@ -2,6 +2,8 @@
   "name": "electron-monitor",
   "version": "1.0.1",
   "main": "client.js",
+  "license" : "MIT",
+  "author"  : "Marcio S Galli",
   "dependencies": {
     "electron-connect": "~0.6.0",
     "electron-prebuilt": "^1.4.3",

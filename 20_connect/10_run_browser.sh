@@ -1,2 +1,3 @@
 export DISPLAY=:0.0
-node ./node_modules/gulp/bin/gulp.js 
+echo "Check the start.json and set your browser on/off"
+node ./node_modules/gulp/bin/gulp.js
